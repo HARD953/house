@@ -35,9 +35,9 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api-auth/',include('rest_framework.urls',namespace='rest_framework')),
-    path('apih/',include('api.urls')),
-    path('apic',include('custumer.urls')),
+    path('api/',include('api.urls')),
+    path('api/',include('custumer.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

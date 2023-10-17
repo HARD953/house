@@ -120,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.AllowAny',
-    # ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,  # Nombre d'éléments par page
 }
@@ -161,8 +161,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1:3000",
     "https://127.0.0.1:8000",
     "http://127.0.0.1:9000",
-    # "https://myhothouse.lanfiasave.com/",
-    # "http://myhothouse.lanfiasave.com/"
+    "https://myhothouse.lanfiasave.com/",
+    "http://myhothouse.lanfiasave.com/"
     ]
 
 CORS_ALLOW_METHODS = [
