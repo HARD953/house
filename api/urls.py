@@ -1,22 +1,6 @@
 from django.urls import path
 from . import views
 from .statistiques import* 
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
-from rest_framework import permissions
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="API Documentation",
-        default_version="v1",
-        description="Documentation for your APIs",
-        terms_of_service="https://www.example.com/terms/",
-        contact=openapi.Contact(email="issa97403@gmail.com"),
-        license=openapi.License(name="Your License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
 
 urlpatterns = [
     # Routes pour les équipements (Equipement)
@@ -56,6 +40,4 @@ urlpatterns = [
     path('api/totaloccupation/', OccupancyRate.as_view(), name='occupation-rate'),
     path('api/totalreservation/', TotalReservations.as_view(), name='reservation-rate'),
     path('api/totalreservations/', ReservationsByMonthYear.as_view(), name='reservations-rate'),
-
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
