@@ -12,32 +12,32 @@ urlpatterns = [
     path('api/services/<int:pk>/', views.ServiceDetail.as_view(), name='service-detail'),
 
     # Routes pour les images (Image)
-    path('api/images/', views.ImageList.as_view(), name='image-list'),
-    path('api/images/<int:pk>/', views.ImageDetail.as_view(), name='image-detail'),
+    path('images/', views.ImageList.as_view(), name='image-list'),
+    path('images/<int:pk>/', views.ImageDetail.as_view(), name='image-detail'),
 
     # Routes pour les biens (Bien)
-    path('api/bienscreate/', views.BienCreate.as_view(), name='bien-create'),
-    path('api/bienslist/', views.BienList.as_view(), name='bien-list'),
-    path('api/biens/<int:pk>/', views.BienDetail.as_view(), name='bien-detail'),
+    path('bienscreate/', views.BienCreate.as_view(), name='bien-create'),
+    path('bienslist/', views.BienList.as_view(), name='bien-list'),
+    path('biens/<int:pk>/', views.BienDetail.as_view(), name='bien-detail'),
 
     # Routes pour les chambres (Chambre)
-    path('api/chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
-    path('api/chambreslist/', views.ChambreList.as_view(), name='chambre-list'),
-    path('api/chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
+    path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
+    path('chambreslist/', views.ChambreList.as_view(), name='chambre-list'),
+    path('chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
 
     # Routes pour les réservations (Reservation)
-    path('api/reservations/', views.ReservationList.as_view(), name='reservation-list'),
-    path('api/reservations/<int:pk>/', views.ReservationDetail.as_view(), name='reservation-detail'),
+    path('reservations/', views.ReservationList.as_view(), name='reservation-list'),
+    path('reservations/<int:pk>/', views.ReservationDetail.as_view(), name='reservation-detail'),
 
     # Routes pour les commentaires (Commentaire)
-    path('api/commentaires/', views.CommentaireList.as_view(), name='commentaire-list'),
-    path('api/commentaires/<int:pk>/', views.CommentaireDetail.as_view(), name='commentaire-detail'),
+    path('commentaires/', views.CommentaireList.as_view(), name='commentaire-list'),
+    path('commentaires/<int:pk>/', views.CommentaireDetail.as_view(), name='commentaire-detail'),
 
     # Routes pour les transactions (Transaction)
-    path('api/transactions/', views.TransactionList.as_view(), name='transaction-list'),
-    path('api/transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction-detail'),
+    path('transactions/', views.TransactionList.as_view(), name='transaction-list'),
+    path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction-detail'),
 
-    path('api/totaloccupation/', OccupancyRate.as_view(), name='occupation-rate'),
-    path('api/totalreservation/', TotalReservations.as_view(), name='reservation-rate'),
-    path('api/totalreservations/', ReservationsByMonthYear.as_view(), name='reservations-rate'),
+    path('totaloccupation/', OccupancyRate.as_view(), name='occupation-rate'),
+    path('totalreservation/', TotalReservations.as_view(), name='reservation-rate'),
+    path('totalreservations/', ReservationsByMonthYear.as_view(), name='reservations-rate'),
 ]
