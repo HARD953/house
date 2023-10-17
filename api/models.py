@@ -17,6 +17,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='property_images/', blank=True)
 
 class Chambre(models.Model):
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     prix = models.DecimalField(max_digits=10, decimal_places=2)
     capacitelits = models.CharField(max_length=255)
     description = models.TextField()

@@ -1,8 +1,7 @@
 from rest_framework import generics
 from .models import Equipement, Service, Image, Bien, Chambre, Reservation, Commentaire, Transaction
 from .serializers import *
-
-
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 class EquipementList(generics.ListCreateAPIView):
@@ -29,21 +28,60 @@ class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
 
-class BienList(generics.ListCreateAPIView):
+class BienCreate(generics.CreateAPIView):
     queryset = Bien.objects.all()
     serializer_class = BienSerializer
+    def perform_create(self, serializer):
+        # Associer l'utilisateur connecté comme propriétaire du Bien
+        serializer.save(owner=self.request.user)
 
+class BienList(generics.ListAPIView):
+    serializer_class = BienSerializer
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Bien pour l'utilisateur connecté
+            return Bien.objects.filter(owner=self.request.user)
+        else:
+            # Renvoyer tous les objets Bien si personne n'est connecté
+            return Bien.objects.all()
+        
 class BienDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Bien.objects.all()
     serializer_class = BienSerializer
-
-class ChambreList(generics.ListCreateAPIView):
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Bien pour l'utilisateur connecté
+            return Bien.objects.filter(owner=self.request.user)
+        else:
+            # Renvoyer tous les objets Bien si personne n'est connecté
+            return Bien.objects.all()
+        
+class ChambreCreate(generics.CreateAPIView):
     queryset = Chambre.objects.all()
     serializer_class = ChambreSerializer
+    def perform_create(self, serializer):
+        # Associer l'utilisateur connecté comme propriétaire du Chambre
+        serializer.save(owner=self.request.user)
 
+class ChambreList(generics.ListAPIView):
+    serializer_class = ChambreSerializer
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Chambre pour l'utilisateur connecté
+            return Chambre.objects.filter(owner=self.request.user)
+        else:
+            # Renvoyer tous les objets Chambre si personne n'est connecté
+            return Chambre.objects.all()
+        
 class ChambreDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Chambre.objects.all()
     serializer_class = ChambreSerializer
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Chambre pour l'utilisateur connecté
+            return Chambre.objects.filter(owner=self.request.user)
+        else:
+            # Renvoyer tous les objets Chambre si personne n'est connecté
+            return Chambre.objects.all()
+
 
 class ReservationList(generics.ListCreateAPIView):
     queryset = Reservation.objects.all()

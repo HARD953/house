@@ -16,11 +16,13 @@ urlpatterns = [
     path('api/images/<int:pk>/', views.ImageDetail.as_view(), name='image-detail'),
 
     # Routes pour les biens (Bien)
-    path('api/biens/', views.BienList.as_view(), name='bien-list'),
+    path('api/bienscreate/', views.BienCreate.as_view(), name='bien-create'),
+    path('api/bienslist/', views.BienList.as_view(), name='bien-list'),
     path('api/biens/<int:pk>/', views.BienDetail.as_view(), name='bien-detail'),
 
     # Routes pour les chambres (Chambre)
-    path('api/chambres/', views.ChambreList.as_view(), name='chambre-list'),
+    path('api/chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
+    path('api/chambreslist/', views.ChambreList.as_view(), name='chambre-list'),
     path('api/chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
 
     # Routes pour les réservations (Reservation)
