@@ -11,9 +11,9 @@ from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
+from django.views import View
 
 # views.py
-@csrf_exempt
 class CustomUserSignUp(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
@@ -26,6 +26,13 @@ class CustomUserSignUp(generics.CreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
+def custom_user_signup_view(request):
+    if request.method == 'POST':
+        view = CustomUserSignUp.as_view()
+        return view(request)
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
 class CustomUserLogin(APIView):
     def post(self, request):
         email = request.data.get('email')
@@ -36,7 +43,7 @@ class CustomUserLogin(APIView):
             token, created = Token.objects.get_or_create(user=user)
             return Response({'token': token.key, 'user_id': user.id}, status=status.HTTP_200_OK)
         return Response({'message': 'Échec de l\'authentification'}, status=status.HTTP_401_UNAUTHORIZED)
-@csrf_exempt
+
 class CustomUserLogout(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -44,11 +51,11 @@ class CustomUserLogout(APIView):
         request.auth.delete()  # Supprime le jeton d'authentification de l'utilisateur actuel
         logout(request)
         return Response({'message': 'Déconnexion réussie'}, status=status.HTTP_200_OK)
-@csrf_exempt
+
 class CustomUserList(generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-@csrf_exempt
+
 class CustomUserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
