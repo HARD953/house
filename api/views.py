@@ -35,7 +35,10 @@ class BienCreate(generics.CreateAPIView):
     serializer_class = BienSerializer
     def perform_create(self, serializer):
         # Associer l'utilisateur connecté comme propriétaire du Bien
-        serializer.save(owner=self.request.user)
+        if self.request.user.is_anonymous:
+            serializer.save()
+        else:
+            serializer.save(owner=self.request.user)
 
 class BienList(generics.ListAPIView):
     serializer_class = BienSerializer
@@ -62,7 +65,10 @@ class ChambreCreate(generics.CreateAPIView):
     serializer_class = ChambreSerializer
     def perform_create(self, serializer):
         # Associer l'utilisateur connecté comme propriétaire du Chambre
-        serializer.save(owner=self.request.user)
+        if self.request.user.is_anonymous:
+            serializer.save()
+        else:
+            serializer.save(owner=self.request.user)
 
 
 class ChambreList(generics.ListAPIView):
