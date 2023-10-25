@@ -4,12 +4,12 @@ from .statistiques import*
 
 urlpatterns = [
     # Routes pour les équipements (Equipement)
-    path('api/equipements/', views.EquipementList.as_view(), name='equipement-list'),
-    path('api/equipements/<int:pk>/', views.EquipementDetail.as_view(), name='equipement-detail'),
+    path('equipements/', views.EquipementList.as_view(), name='equipement-list'),
+    path('equipements/<int:pk>/', views.EquipementDetail.as_view(), name='equipement-detail'),
 
     # Routes pour les services (Service)
-    path('api/services/', views.ServiceList.as_view(), name='service-list'),
-    path('api/services/<int:pk>/', views.ServiceDetail.as_view(), name='service-detail'),
+    path('services/', views.ServiceList.as_view(), name='service-list'),
+    path('services/<int:pk>/', views.ServiceDetail.as_view(), name='service-detail'),
 
     # Routes pour les images (Image)
     path('images/', views.ImageList.as_view(), name='image-list'),
