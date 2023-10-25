@@ -35,14 +35,14 @@ class Bien(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     region =models.CharField(max_length=255)
     chambre = models.ManyToManyField(Chambre,blank=True)
-    images = models.ManyToManyField(Image) 
+    images = models.ManyToManyField(Image,blank=True) 
     type = models.CharField(max_length=255)
     numero = models.FloatField()
     nom = models.CharField(max_length=255, blank=True, null=True)
     nombre_chambre = models.FloatField()
     description = models.TextField()
     statut = models.CharField(max_length=255)
-    services = models.ManyToManyField(Service)  # Modifiez ici pour utiliser ManyToManyField
+    services = models.ManyToManyField(Service,blank=True)  # Modifiez ici pour utiliser ManyToManyField
     etatpropriete = models.CharField(max_length=255)
     etoile = models.FloatField()
     logitude= models.DecimalField(max_digits=10, decimal_places=2)
