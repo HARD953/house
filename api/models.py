@@ -27,7 +27,7 @@ class Chambre(models.Model):
     numeromaintenance = models.CharField(max_length=255)
     datedernieremaintenance = models.DateField()
     reduction = models.CharField(max_length=255)
-    images = models.ManyToManyField(Image)
+    images = models.ManyToManyField(Image,blank=True)
     def __str__(self):
         return ("{}_{}".format(self.disponibilite,self.prix))
 
