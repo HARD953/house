@@ -50,6 +50,32 @@ class ChambreSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'chambre-detail'},  # Remplacez 'chambre-detail' par le nom correct de votre vue
         }
 
+
+class ChambreListSerializer(serializers.HyperlinkedModelSerializer):
+    # bien = serializers.HyperlinkedRelatedField(
+    #     view_name='bien-detail',  # Remplacez 'chambre-detail' par le nom correct de votre vue
+    #     queryset=Bien.objects.all()
+    # )
+    class Meta:
+        model = Chambre
+        fields = ['capacitelits', 'images']
+        extra_kwargs = {
+            'url': {'view_name': 'chambre-detail'},  # Remplacez 'chambre-detail' par le nom correct de votre vue
+        }
+
+class ChambreBienSerializer(serializers.ModelSerializer):
+    bien = serializers.HyperlinkedRelatedField(
+        view_name='chambre-detail',  # Remplacez 'chambre-detail' par le nom correct de votre vue
+        queryset=Bien.objects.all()
+    )  # Pour afficher les détails du bien
+
+    class Meta:
+        model = Chambre
+        fields = '__all__'
+        extra_kwargs = {
+            'url': {'view_name': 'chambre-detail'},  # Remplacez 'chambre-detail' par le nom correct de votre vue
+        }
+
 class BienSerializer(serializers.HyperlinkedModelSerializer):
     equipements = EquipementSerializer(many=True, read_only=True)
     

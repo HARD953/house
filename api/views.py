@@ -72,7 +72,8 @@ class ChambreCreate(generics.CreateAPIView):
 
 
 class ChambreList(generics.ListAPIView):
-    serializer_class = ChambreSerializer
+    serializer_class = ChambreBienSerializer
+
     def get_queryset(self):
         if self.request.user.is_authenticated:
             # Filtrer les objets Chambre pour l'utilisateur connecté

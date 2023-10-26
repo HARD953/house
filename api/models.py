@@ -16,25 +16,9 @@ class Image(models.Model):
     texte = models.TextField()
     image = models.ImageField(upload_to='property_images/', blank=True)
 
-class Chambre(models.Model):
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    prix = models.DecimalField(max_digits=10, decimal_places=2)
-    capacitelits = models.CharField(max_length=255)
-    description = models.TextField()
-    region =models.CharField(max_length=255)
-    equipements = models.ManyToManyField(Equipement, blank=True)  # Modifiez ici pour utiliser ManyToManyField
-    disponibilite = models.BooleanField(default=True)
-    numeromaintenance = models.CharField(max_length=255)
-    datedernieremaintenance = models.DateField()
-    reduction = models.CharField(max_length=255)
-    images = models.ManyToManyField(Image,blank=True)
-    def __str__(self):
-        return ("{}_{}".format(self.disponibilite,self.prix))
-
 class Bien(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     region =models.CharField(max_length=255)
-    chambre = models.ManyToManyField(Chambre,blank=True)
     images = models.ManyToManyField(Image,blank=True) 
     type = models.CharField(max_length=255)
     numero = models.FloatField()
@@ -49,6 +33,24 @@ class Bien(models.Model):
     latitude= models.DecimalField(max_digits=10, decimal_places=2)
     def __str__(self):
         return self.nom
+    
+class Chambre(models.Model):
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
+    capacitelits = models.CharField(max_length=255)
+    description = models.TextField()
+    region =models.CharField(max_length=255)
+    equipements = models.ManyToManyField(Equipement, blank=True)  # Modifiez ici pour utiliser ManyToManyField
+    disponibilite = models.BooleanField(default=True)
+    numeromaintenance = models.CharField(max_length=255)
+    datedernieremaintenance = models.DateField()
+    reduction = models.CharField(max_length=255)
+    images = models.ManyToManyField(Image,blank=True)
+    bien = models.ForeignKey('Bien', on_delete=models.CASCADE,related_name="chambres")
+    def __str__(self):
+        return ("{}_{}".format(self.disponibilite,self.prix))
+
+
 
 class Reservation(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
