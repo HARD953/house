@@ -92,7 +92,28 @@ class ChambreResidence(generics.ListAPIView):
         else:
             # Renvoyer tous les objets Chambre si personne n'est connecté
             return Chambre.objects.filter(type="Residence")
+        
+class ChambreHotel(generics.ListAPIView):
+    serializer_class = ChambreBienSerializer
 
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Chambre pour l'utilisateur connecté
+            return Chambre.objects.filter(owner=self.request.user,type="Hotel")
+        else:
+            # Renvoyer tous les objets Chambre si personne n'est connecté
+            return Chambre.objects.filter(type="Hotel")
+        
+class HotelResidence(generics.ListAPIView):
+    serializer_class = ChambreBienSerializer
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Chambre pour l'utilisateur connecté
+            return Chambre.objects.filter(owner=self.request.user)
+        else:
+            # Renvoyer tous les objets Chambre si personne n'est connecté
+            return Chambre.objects.all()
         
 class ChambreDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ChambreSerializer

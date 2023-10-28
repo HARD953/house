@@ -31,6 +31,11 @@ class Bien(models.Model):
     etoile = models.FloatField()
     logitude= models.DecimalField(max_digits=10, decimal_places=2)
     latitude= models.DecimalField(max_digits=10, decimal_places=2)
+    img1 = models.ImageField(upload_to='property_images/', blank=True)
+    img2 = models.ImageField(upload_to='property_images/', blank=True)
+    img3 = models.ImageField(upload_to='property_images/', blank=True)
+    img4 = models.ImageField(upload_to='property_images/', blank=True)
+    img5 = models.ImageField(upload_to='property_images/', blank=True)
     def __str__(self):
         return self.nom
     
@@ -46,7 +51,11 @@ class Chambre(models.Model):
     numeromaintenance = models.CharField(max_length=255)
     datedernieremaintenance = models.DateField()
     reduction = models.CharField(max_length=255)
-    images = models.ManyToManyField(Image,blank=True)
+    img1 = models.ImageField(upload_to='property_images/', blank=True)
+    img2 = models.ImageField(upload_to='property_images/', blank=True)
+    img3 = models.ImageField(upload_to='property_images/', blank=True)
+    img4 = models.ImageField(upload_to='property_images/', blank=True)
+    img5 = models.ImageField(upload_to='property_images/', blank=True)
     bien = models.ForeignKey('Bien', on_delete=models.CASCADE,related_name="chambres")
     def __str__(self):
         return ("{}_{}".format(self.disponibilite,self.prix))
