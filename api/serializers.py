@@ -85,7 +85,7 @@ class BienSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'url': {'view_name': 'bien-detail'},  # Remplacez 'bien-detail' par le nom correct de votre vue
         }
-
+                                                                                            
 class ReservationSerializer(serializers.HyperlinkedModelSerializer):
     chambre = serializers.HyperlinkedRelatedField(
         view_name='chambre-detail',  # Remplacez 'chambre-detail' par le nom correct de votre vue

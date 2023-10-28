@@ -37,6 +37,7 @@ class Bien(models.Model):
 class Chambre(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     prix = models.DecimalField(max_digits=10, decimal_places=2)
+    type = models.CharField(max_length=255)
     capacitelits = models.CharField(max_length=255)
     description = models.TextField()
     region =models.CharField(max_length=255)
@@ -49,8 +50,6 @@ class Chambre(models.Model):
     bien = models.ForeignKey('Bien', on_delete=models.CASCADE,related_name="chambres")
     def __str__(self):
         return ("{}_{}".format(self.disponibilite,self.prix))
-
-
 
 class Reservation(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

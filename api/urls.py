@@ -22,7 +22,8 @@ urlpatterns = [
 
     # Routes pour les chambres (Chambre)
     path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
-    path('chambreslist/', views.ChambreList.as_view(), name='chambre-list'),
+    path('chambreshotel/', views.ChambreHotel.as_view(), name='chambre-list'),
+    path('chambresresid/', views.ChambreResidence.as_view(), name='chambre-list'),
     path('chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
 
     # Routes pour les réservations (Reservation)

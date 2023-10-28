@@ -71,16 +71,27 @@ class ChambreCreate(generics.CreateAPIView):
             serializer.save(owner=self.request.user)
 
 
-class ChambreList(generics.ListAPIView):
+class ChambreHotel(generics.ListAPIView):
     serializer_class = ChambreBienSerializer
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
             # Filtrer les objets Chambre pour l'utilisateur connecté
-            return Chambre.objects.filter(owner=self.request.user)
+            return Chambre.objects.filter(owner=self.request.user,type="Hotel")
         else:
             # Renvoyer tous les objets Chambre si personne n'est connecté
-            return Chambre.objects.all()
+            return Chambre.objects.filter(type="Hotel")
+        
+class ChambreResidence(generics.ListAPIView):
+    serializer_class = ChambreBienSerializer
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Filtrer les objets Chambre pour l'utilisateur connecté
+            return Chambre.objects.filter(owner=self.request.user,type="Residence")
+        else:
+            # Renvoyer tous les objets Chambre si personne n'est connecté
+            return Chambre.objects.filter(type="Residence")
 
         
 class ChambreDetail(generics.RetrieveUpdateDestroyAPIView):
