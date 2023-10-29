@@ -129,6 +129,14 @@ class ChambreDetail(generics.RetrieveUpdateDestroyAPIView):
 class ReservationList(generics.ListCreateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+    def perform_create(self, serializer):
+        # Associer l'utilisateur connecté comme propriétaire du Chambre
+        if self.request.user.is_anonymous:
+            serializer.save()
+        else:
+            serializer.save(owner=self.request.user)
+
+
 
 
 class ReservationDetail(generics.RetrieveUpdateDestroyAPIView):

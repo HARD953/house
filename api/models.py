@@ -61,7 +61,7 @@ class Chambre(models.Model):
         return ("{}_{}".format(self.disponibilite,self.prix))
 
 class Reservation(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,blank=True)
     chambre = models.ForeignKey(Chambre, on_delete=models.CASCADE)
     region =models.CharField(max_length=255)
     date_arrive = models.DateField()

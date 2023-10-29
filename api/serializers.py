@@ -65,7 +65,7 @@ class ChambreListSerializer(serializers.HyperlinkedModelSerializer):
 
 class ChambreBienSerializer(serializers.ModelSerializer):
     bien = serializers.HyperlinkedRelatedField(
-        view_name='chambre-detail',  # Remplacez 'chambre-detail' par le nom correct de votre vue
+        view_name='bien-detail',  # Remplacez 'chambre-detail' par le nom correct de votre vue
         queryset=Bien.objects.all()
     )  # Pour afficher les détails du bien
 
