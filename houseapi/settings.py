@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'houseapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',  
-#         'PASSWORD': '6+c2+35bBDABg+gEbdAf61ce141aE14f',  
-#         'HOST': 'roundhouse.proxy.rlwy.net', 
-#         'PORT': '56191',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',  
+        'PASSWORD': '*aE1g11f4CE1AFbd5FB1b3ge-*bgb4D5',  
+        'HOST': 'monorail.proxy.rlwy.net', 
+        'PORT': '20192',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
