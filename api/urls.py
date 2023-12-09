@@ -12,23 +12,24 @@ urlpatterns = [
     path('services/<int:pk>/', views.ServiceDetail.as_view(), name='service-detail'),
 
     # Routes pour les images (Image)
-    path('images/', views.ImageList.as_view(), name='image-list'),
-    path('images/<int:pk>/', views.ImageDetail.as_view(), name='image-detail'),
+    # path('images/', views.ImageList.as_view(), name='image-list'),
+    # path('images/<int:pk>/', views.ImageDetail.as_view(), name='image-detail'),
 
     # Routes pour les biens (Bien)
-    path('bienscreate/', views.BienCreate.as_view(), name='bien-create'),
-    path('bienslist/', views.BienList.as_view(), name='bien-list'),
-    path('biens/<int:pk>/', views.BienDetail.as_view(), name='bien-detail'),
+    # path('bienscreate/', views.BienCreate.as_view(), name='bien-create'),
+    # path('bienslist/', views.BienList.as_view(), name='bien-list'),
+    # path('biens/<int:pk>/', views.BienDetail.as_view(), name='bien-detail'),
 
     # Routes pour les chambres (Chambre)
+    # path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
     path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
-    path('chambreshotel/', views.ChambreHotel.as_view(), name='chambre-hotel'),
-    path('chambresresid/', views.ChambreResidence.as_view(), name='chambre-resid'),
-    path('chambreshotelresid/', views.ChambreResidence.as_view(), name='hotel-resid'),
+    path('chambreshotel/', views.ChambreListHotel.as_view(), name='chambre-hotel'),
+    path('chambresresid/', views.ChambreListResidence.as_view(), name='chambre-resid'),
+    path('chambrelist/', views.ChambreList.as_view(), name='chambre-list'),
     path('chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
-
+    # path('chambreshotelresid/', views.HotelResidence.as_view(), name='hotel-resid'),
     # Routes pour les réservations (Reservation)
-    path('reservations/', views.ReservationList.as_view(), name='reservation-list'),
+    path('reservations/', views.ReservationCreate.as_view(), name='reservation-list'),
     path('reservations/<int:pk>/', views.ReservationDetail.as_view(), name='reservation-detail'),
 
     # Routes pour les commentaires (Commentaire)
@@ -36,10 +37,10 @@ urlpatterns = [
     path('commentaires/<int:pk>/', views.CommentaireDetail.as_view(), name='commentaire-detail'),
 
     # Routes pour les transactions (Transaction)
-    path('transactions/', views.TransactionList.as_view(), name='transaction-list'),
-    path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction-detail'),
+    # path('transactions/', views.TransactionList.as_view(), name='transaction-list'),
+    # path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction-detail'),
 
-    path('totaloccupation/', OccupancyRate.as_view(), name='occupation-rate'),
-    path('totalreservation/', TotalReservations.as_view(), name='reservation-rate'),
-    path('totalreservations/', ReservationsByMonthYear.as_view(), name='reservations-rate'),
+    # path('totaloccupation/', OccupancyRate.as_view(), name='occupation-rate'),
+    # path('totalreservation/', TotalReservations.as_view(), name='reservation-rate'),
+    # path('totalreservations/', ReservationsByMonthYear.as_view(), name='reservations-rate'),
 ]

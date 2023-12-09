@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'houseapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',  
-        'PASSWORD': '6+c2+35bBDABg+gEbdAf61ce141aE14f',  
-        'HOST': 'roundhouse.proxy.rlwy.net', 
-        'PORT': '56191',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',  
+#         'PASSWORD': '6+c2+35bBDABg+gEbdAf61ce141aE14f',  
+#         'HOST': 'roundhouse.proxy.rlwy.net', 
+#         'PORT': '56191',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -162,19 +162,19 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 AUTH_USER_MODEL = 'custumer.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
-    "https://127.0.0.1:8000",
-    "http://localhost:8000",
-    "https://localhost:8000",
-    "http://127.0.0.1:9000",
-    # "https://myhot.up.railway.app/",
-    # "http://myhot.up.railway.app/"
-    ]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "https://127.0.0.1:3000",
+#     "http://127.0.0.1:8000",
+#     "https://127.0.0.1:8000",
+#     "http://localhost:8000",
+#     "https://localhost:8000",
+#     "http://127.0.0.1:9000",
+#     "https://myhot.up.railway.app/",
+#     "http://myhot.up.railway.app/",
+#     ]
 
 CORS_ALLOW_METHODS = [
     "DELETE",
