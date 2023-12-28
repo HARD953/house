@@ -22,10 +22,15 @@ urlpatterns = [
 
     # Routes pour les chambres (Chambre)
     # path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
+    path('etablilist/', views.EtabliList.as_view(), name='etabli-list'),
+    path('etablicreate/', views.EtabliCreate.as_view(), name='etabli-create'),
+    path('etablidetail/<int:pk>/', views.EtabliDetail.as_view(), name='chambre-detail'),
+    # Routes pour les hotel (hotel)
     path('chambrescreate/', views.ChambreCreate.as_view(), name='chambre-create'),
     path('chambreshotel/', views.ChambreListHotel.as_view(), name='chambre-hotel'),
     path('chambresresid/', views.ChambreListResidence.as_view(), name='chambre-resid'),
     path('chambrelist/', views.ChambreList.as_view(), name='chambre-list'),
+    path('chambrelistaut/', views.ChambreListAuteur.as_view(), name='chambre-list1'),
     path('chambres/<int:pk>/', views.ChambreDetail.as_view(), name='chambre-detail'),
     # path('chambreshotelresid/', views.HotelResidence.as_view(), name='hotel-resid'),
     # Routes pour les réservations (Reservation)

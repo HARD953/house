@@ -35,17 +35,34 @@ class Service(models.Model):
 #     def __str__(self):
 #         return self.nom
     
+class Etablissement(models.Model):
+    auteur=models.ForeignKey(CustomUser,on_delete=models.CASCADE,default=1)
+    typebien = models.CharField(max_length=255)
+    nom = models.CharField(max_length=255)
+    adresse = models.CharField(max_length=255)
+    description = models.TextField()
+    nombrechambre=models.CharField(max_length=255)
+    img1 = models.ImageField(upload_to='property_images/', blank=True)
+    img2 = models.ImageField(upload_to='property_images/', blank=True)
+    img3 = models.ImageField(upload_to='property_images/', blank=True)
+    img4 = models.ImageField(upload_to='property_images/', blank=True)
+    img5 = models.ImageField(upload_to='property_images/', blank=True)
+    chambres = models.ManyToManyField('Chambre', blank=True, related_name='etablissement_chambres')
+    def __str__(self):
+        return self.auteur
+
 class Chambre(models.Model):
-    typebien=models.CharField(max_length=255)
-    nombien=models.CharField(max_length=255)
-    nomchambre=models.CharField(max_length=255)
-    commune=models.CharField(max_length=255)
+    auteur=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    typebien = models.CharField(max_length=255)
+    nombien = models.CharField(max_length=255)
+    nomchambre = models.CharField(max_length=255)
+    commune = models.CharField(max_length=255)
     etoile = models.FloatField()
     prix = models.DecimalField(max_digits=10, decimal_places=2)
     capacitelits = models.CharField(max_length=255)
     apropos = models.TextField()
-    equipements = models.ManyToManyField(Equipement, blank=True)  # Modifiez ici pour utiliser ManyToManyField
-    emplacement =models.CharField(max_length=255)
+    equipements = models.ManyToManyField(Equipement, blank=True)
+    emplacement = models.CharField(max_length=255)
     disponibilite = models.BooleanField(default=False)
     reduction = models.CharField(max_length=255)
     img1 = models.ImageField(upload_to='property_images/', blank=True)
@@ -53,9 +70,10 @@ class Chambre(models.Model):
     img3 = models.ImageField(upload_to='property_images/', blank=True)
     img4 = models.ImageField(upload_to='property_images/', blank=True)
     img5 = models.ImageField(upload_to='property_images/', blank=True)
+    etablissement = models.CharField(max_length=255)
     def __str__(self):
-        return ("{}_{}".format(self.disponibilite,self.prix))
-
+        return ("{}_{}".format(self.typebien, self.prix))
+    
 class Reservation(models.Model):
     id_chambre=models.IntegerField()
     statut =models.CharField(max_length=255,default="En_cours")
@@ -74,7 +92,7 @@ class Reservation(models.Model):
         return ("{}_{}".format(self.user,self.prix_total))
 
 class Commentaire(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    id_chambre=models
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     comment = models.TextField()
 

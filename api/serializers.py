@@ -46,6 +46,15 @@ class ChambreSerializer(serializers.ModelSerializer):
         # extra_kwargs = {
         #     'url': {'view_name': 'chambre-detail'},  # Remplacez 'chambre-detail' par le nom correct de votre vue
         # }
+class EtabliSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Etablissement 
+        fields = '__all__'
+
+class EtabliSerializerBien(serializers.ModelSerializer):
+    class Meta:
+        model = Etablissement 
+        fields = ['auteur','typebien','nom']
 
 class ChambreSerializerl(serializers.ModelSerializer):
     class Meta:
