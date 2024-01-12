@@ -31,14 +31,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30, default="issa")
     start_date = models.DateTimeField(default=timezone.now)
     pays = models.CharField(max_length=30, default="issa")
-    numero = models.CharField(max_length=300, blank=True, null=True)
+    numero = models.CharField(max_length=300, blank=True)
     create = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    profile_image = models.ImageField(upload_to='user_image/', null=True, blank=True)
+    profile_image = models.ImageField(upload_to='user_image/', blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_user = models.BooleanField(default=False)
+    is_client= models.BooleanField(default=False)
+    is_gerant= models.BooleanField(default=False)
+    is_propritaire= models.BooleanField(default=False)
     last_login = models.DateTimeField(default=timezone.now())
     district = models.CharField(max_length=100, blank=False)
     region = models.CharField(max_length=100, blank=False)
@@ -46,7 +49,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     sous_prefecture = models.CharField(max_length=100, blank=False)
     commune = models.CharField(max_length=100, blank=False)
     
-
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
@@ -54,3 +56,4 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    

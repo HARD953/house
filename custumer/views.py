@@ -90,9 +90,18 @@ class BlacklistTokenUpdateView(APIView):
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         
-class UserListCreateView(generics.ListCreateAPIView):
-    queryset = CustomUser.objects.all()
-    serializer_class = CustomUserSerializer
+class UserListCreateViewG(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.filter(is_gerant=True)
+    serializer_class = CustomUserSerializerG
+
+class UserListCreateViewP(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.filter(is_propritaire=True)
+    serializer_class = CustomUserSerializerP
+
+class UserListCreateViewC(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.filter(is_client=True)
+    serializer_class = CustomUserSerializerC
+
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()

@@ -8,7 +8,9 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     # Routes pour les équipements (Equipement)
-    path('users/', UserListCreateView.as_view(), name='user-list-create'),  # Liste et création d'utilisateurs
+    path('gerant/', UserListCreateViewG.as_view(), name='user-list-create'),
+    path('proprietaire/', UserListCreateViewP.as_view(), name='user-list-create'),  # Liste et création d'utilisateurs
+    path('client/', UserListCreateViewC.as_view(), name='user-list-create'),
     path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),  # Détails, mise à jour et suppression d'un utilisateur
     path('detailadimn/', DetailConecter.as_view(),name='detail-des-admin'),
 
