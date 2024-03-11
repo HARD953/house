@@ -15,7 +15,7 @@ from datetime import timedelta
 import os
 import django_heroku
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project l  ike this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -89,9 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',  
-        'PASSWORD': 'cf262GBa2f2-E2*35F2-C1d6Fe6GEb5E',  
+        'PASSWORD': 'uiPRmkeFwouHJgyMKlGtliBvAWgSgaoh',  
         'HOST': 'monorail.proxy.rlwy.net', 
-        'PORT': '33751',
+        'PORT': '33064',
     }
 }
 

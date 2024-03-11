@@ -39,7 +39,6 @@ class EtabliList(generics.ListAPIView):
     serializer_class = EtabliSerializerBien
     def get_queryset(self):
         return Etablissement.objects.filter(auteur=self.request.user)
-
         
 class EtabliDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Etablissement.objects.all()
@@ -89,7 +88,6 @@ class ReservationDetail(generics.RetrieveUpdateDestroyAPIView):
 class CommentaireList(generics.ListCreateAPIView):
     queryset = Commentaire.objects.all()
     serializer_class = CommentaireSerializer
-
 
 class CommentaireDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Commentaire.objects.all()
