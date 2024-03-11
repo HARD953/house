@@ -175,7 +175,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://myhot.up.railway.app/",
     "http://myhot.up.railway.app/",
     "https://myhot-myhot.vercel.app/",
-    "http://myhot-myhot.vercel.app/"
+    "http://myhot-myhot.vercel.app/",
+    "https://web-dashboard-dash-myhot.vercel.app/",
+    "http://web-dashboard-dash-myhot.vercel.app/",
     ]
 
 CORS_ALLOW_METHODS = [
